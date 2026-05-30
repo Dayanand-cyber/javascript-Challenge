@@ -1,0 +1,79 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+    background: #b1bd0466;
+}
+
+.hero{
+    padding: 2rem;
+    font-size: 3rem;
+    text-transform: capitalize;
+    text-align: center;
+    letter-spacing: 2px;
+    font-weight: 900;
+}
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+li{
+    list-style: none;
+    text-transform: capitalize;
+    font-size: 1.3rem;
+}
+.input-div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+}
+.search-form{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.3rem;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.search{
+    width: 40%;
+    height: 25px;
+    padding: 3px;
+    margin: 5px;
+    border-radius: 8px;
+}
+.btn{
+    width: 140px;
+    padding: 5px;
+    margin: 12px;
+    border-radius: 7px;
+    background-color: blueviolet;
+    color: white;
+}
+
+.suggestion{
+    display: flex;
+    text-align: center;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.suggestions li {
+  background: white;
+  list-style: none;
+  border-bottom: 1px solid #D8D8D8;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+  margin: 0;
+  padding: 20px;
+  transition: background 0.2s;
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+}
