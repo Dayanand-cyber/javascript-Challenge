@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Html canvas</title>
+  </head>
+  <body>
+    <canvas id="board" width="300" height="500"></canvas>
+
+    <script>
+      const board = document.querySelector("#board");
+      const ctx = board.getContext("2d");
+      board.width = window.innerWidth;
+      board.height = window.innerHeight;
+      ctx.strokeStyle = "#BADA55"; //color of the line
+      ctx.lineJoin = "round"; //how should the conner look like when two lines meet ( here it is round )
+      ctx.lineCap = "round"; //how should the line end look like straight line,round etc
+      ctx.lineWidth = 100; //width on the storke
+
+      let isDrwaing = false;
+      let lastx = 0;
+      let lasty = 0;
+      let hue = 0;
+      let direction = true;
+
+      function draw(e) {
+        if (!isDrwaing) return;
+        // console.log(e)
+        ctx.strokeStyle = `hsl(${hue++},100%,50%)`;
+        ctx.beginPath();
+        ctx.moveTo(lastx, lasty); //start form
+        ctx.lineTo(e.offsetX, e.offsetY); //end at
+        ctx.stroke(); //this function draws the line
+        [lastx, lasty] = [e.offsetX, e.offsetY]; //( helps to make the line continous ) this make the beginning of the next stroke from the last postion of the mouse from the perivous stroke
+
+        if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
+          direction = !direction;
+        }
+        direction ? ctx.lineWidth++ : ctx.lineWidth--;
+      }
+
+      board.addEventListener("mousedown", (e) => {
+        isDrwaing = true;
+        [lastx, lasty] = [e.offsetX, e.offsetY]; //helps to start the line from the point where the mouse is first mousedowned especailly this help for drawing the first line ( or else the first line would start from the conner)
+      });
+      board.addEventListener("mousemove", draw);
+      board.addEventListener("mouseup", () => (isDrwaing = false));
+      board.addEventListener("mouseout", () => (isDrwaing = false));
+    </script>
+
+    <style>
+      html,
+      body {
+        margin: 0;
+      }
+    </style>
+  </body>
+</html>
