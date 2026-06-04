@@ -51,9 +51,11 @@
       let lastchecked;
       let isBwteeen = false;
       function handleCheck(e) {
+        //works only if we pres shift key and we check the box( not uncheck )
         if (e.shiftKey && this.checked) {
           checkboxes.forEach((box) => {
             if (box === this || box === lastchecked) {
+                //used for incdicating wheathe the checkbox are inbetween 
               isBwteeen = !isBwteeen;
             }
             if(isBwteeen)
