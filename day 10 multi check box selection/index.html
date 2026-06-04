@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>check box</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <header class="head">
+      <h1>selecting multiple check box</h1>
+    </header>
+    <div class="input-box">
+      <div class="item">
+        <input type="checkbox" />
+        <label>check 1</label>
+      </div>
+      <div class="item">
+        <input type="checkbox" />
+        <label>check 2</label>
+      </div>
+      <div class="item">
+        <input type="checkbox" />
+        <label>check 3</label>
+      </div>
+      <div class="item">
+        <input type="checkbox" />
+        <label>check 4</label>
+      </div>
+      <div class="item">
+        <input type="checkbox" />
+        <label>check 5</label>
+      </div>
+      <div class="item">
+        <input type="checkbox" />
+        <label>check 6</label>
+      </div>
+      <div class="item">
+        <input type="checkbox" />
+        <label>check 7</label>
+      </div>
+      <div class="item">
+        <input type="checkbox" />
+        <label>check 8</label>
+      </div>
+    </div>
+
+    <script>
+      checkboxes = document.querySelectorAll("input");
+
+      let lastchecked;
+      let isBwteeen = false;
+      function handleCheck(e) {
+        if (e.shiftKey && this.checked) {
+          checkboxes.forEach((box) => {
+            if (box === this || box === lastchecked) {
+              isBwteeen = !isBwteeen;
+            }
+            if(isBwteeen)
+            {
+                box.checked=true
+            }
+          });
+        }
+
+        lastchecked = this;
+      }
+
+      checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener("click", handleCheck);
+      });
+    </script>
+  </body>
+</html>
