@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Key Sequence</title>
+  </head>
+  <body>
+    <script>
+      let keyPressed = [];
+      const code = "hello";
+      window.addEventListener("keyup", (e) => {
+        keyPressed.push(e.key);
+        console.log(keyPressed);
+        keyPressed.splice(-code.length - 1, keyPressed.length - code.length);
+        if (keyPressed.join("").includes(code)) {
+            alert("hey succesfull")
+        }
+      });
+    </script>
+  </body>
+</html>
