@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>LocalStorage</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="https://fav.farm/🔥" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <h2>The Table</h2>
+      <ul class="plates">
+        <li>The foods are</li>
+      </ul>
+      <form class="add-items">
+        <input type="text" name="item" placeholder="item name" required />
+        <input type="submit" value="+ AddItem" />
+      </form>
+    </div>
+
+    <script>
+      const addItems = document.querySelector(".add-items");
+      const itemsList = document.querySelector(".plates");
+      const items = JSON.parse(localStorage.getItem("item")) || [];
+
+      function additem(e) {
+        e.preventDefault();
+        const text = this.querySelector("[name=item]").value;
+        const item = {
+          text,
+          done: false,
+        };
+
+        items.push(item);
+        populateList(items, itemsList);
+        localStorage.setItem("item", JSON.stringify(items));
+        this.reset();
+      }
+
+      function populateList(plates = [], plateList) {
+        plateList.innerHTML = plates
+          .map((plate, i) => {
+            return `
+        <li>
+            <input type="checkbox" data-index=${i} id="item${i}" ${plate.done ? "checked" : ""}>
+                <label for="item${i}">${plate.text}</label>
+                </li>
+                `;
+          })
+          .join("");
+      }
+      function toogledone(e) {
+        if (!e.target.matches("input")) return;
+        const el = e.target;
+        const index = el.dataset.index;
+        items[index].done = !items[index].done;
+        localStorage.setItem("item", JSON.stringify(items));
+        populateList(items, itemsList);
+      }
+      addItems.addEventListener("submit", additem);
+      itemsList.addEventListener("click", toogledone);
+      populateList(items, itemsList);
+    </script>
+  </body>
+</html>

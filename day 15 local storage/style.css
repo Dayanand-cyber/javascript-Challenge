@@ -1,0 +1,27 @@
+html,body{
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper{
+    /* height: 100vh; */
+    
+    margin-top: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper ul{
+    list-style: none;
+    text-align: center;
+    padding-left: 0;
+    margin-left: 0; 
+}
+
+.wrapper form{
+    width: 300px;
+    display: flex;
+    justify-content: space-evenly;
+}
