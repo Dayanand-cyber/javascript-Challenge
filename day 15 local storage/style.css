@@ -25,3 +25,23 @@ html,body{
     display: flex;
     justify-content: space-evenly;
 }
+
+.del-con{
+    padding: 20px;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.del{
+    padding: 5px;
+    width: 78px;
+    border-radius: 4px;
+}
+
+.plates li{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
